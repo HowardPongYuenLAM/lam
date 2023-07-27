@@ -1,7 +1,9 @@
 import streamlit as st
 import os
+import mytoken as *
 
 def main():
+    mytoken
 #    os.environ['test']='pqrst'
     st.set_page_config(page_title="Ask")
     st.header("Ask your PDF testing")
