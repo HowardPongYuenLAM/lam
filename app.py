@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-import mytoken
+from mytoken import *
 
 def main():
     os.environ['test']='pqrst'
@@ -10,5 +10,5 @@ def main():
     st.write(response)
     
 if __name__ == '__main__':
-    mytoken
+    print(mykey)
     main()
