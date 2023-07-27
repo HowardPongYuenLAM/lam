@@ -8,7 +8,7 @@ def main():
     st.header("Ask your PDF testing")
     response=os.environ['test']
     st.write(response)
+    st.write(mykey)
     
 if __name__ == '__main__':
-    print(mykey)
     main()
