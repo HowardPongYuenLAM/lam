@@ -6,8 +6,7 @@ from pathlib import Path
 
 def main():
     st.set_page_config(page_title="Ask pdf")
-    st.header("test key")
-#    response="lampongyuen"
+    st.header("test key2")
     response=GCP_PROJECT_ID
     st.write(response)
     
