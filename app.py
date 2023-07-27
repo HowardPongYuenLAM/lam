@@ -12,5 +12,5 @@ def main():
     
 if __name__ == '__main__':
     load_dotenv(verbose=True)
-    working_key = os.environ.get("api_key")
+    working_key = os.environ.get("mykey2")
     main()
