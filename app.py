@@ -5,7 +5,7 @@ def main():
 #    os.environ['test']='pqrst'
     st.set_page_config(page_title="Ask")
     st.header("Ask your PDF testing")
-    response=os.environ['test']
+    response=os.environ['test2']
     st.write(response)
 if __name__ == '__main__':
     main()
