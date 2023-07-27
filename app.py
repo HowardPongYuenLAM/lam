@@ -4,6 +4,7 @@ from mytoken import *
 from dotenv import load_dotenv
 
 def main():
+    load_dotenv
     st.set_page_config(page_title="Ask pdf")
     st.header("test key")
 #    response=os.environ('mykey2')
