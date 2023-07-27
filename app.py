@@ -1,3 +1,9 @@
+# https://pypi.org/project/python-dotenv/
+# to hide .env
+# git rm -r --cached .env / git rm --cached .env
+# git add .
+# git commit -m 'message'
+# git push
 import streamlit as st
 import os
 from mytoken import *
