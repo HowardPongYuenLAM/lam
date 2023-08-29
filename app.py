@@ -1,21 +1,14 @@
-# https://pypi.org/project/python-dotenv/
-# to hide .env
-# git rm -r --cached .env / git rm --cached .env
-# git add .
-# git commit -m 'message'
-# git push
 import streamlit as st
 import os
-from mytoken import *
-from dotenv import load_dotenv
 
-def main():
-    st.set_page_config(page_title="Ask pdf after remove env")
-    st.header("test key 2023")
-    response=HUGGINGFACEHUB_API_TOKEN
-    st.write(response)
-    
-if __name__ == '__main__':
-    load_dotenv(verbose=True)
-    HUGGINGFACEHUB_API_TOKEN = os.getenv('HUGGINGFACEHUB_API_TOKEN')
-    main()
+st.write("testing 2023")
+# Everything is accessible via the st.secrets dict:
+st.write("DB username:", st.secrets["db_username"])
+st.write("DB password:", st.secrets["db_password"])
+st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
+
+# And the root-level secrets are also accessible as environment variables:
+st.write(
+    "Has environment variables been set:",
+    os.environ["db_username"] == st.secrets["db_username"],
+)
