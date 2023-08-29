@@ -2,13 +2,18 @@ import streamlit as st
 import os
 
 st.write("testing 2023")
-# Everything is accessible via the st.secrets dict:
-st.write("DB username:", st.secrets["db_username"])
-st.write("DB password:", st.secrets["db_password"])
-st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
 
-# And the root-level secrets are also accessible as environment variables:
-st.write(
-    "Has environment variables been set:",
-    os.environ["db_username"] == st.secrets["db_username"],
-)
+# streamlit_app.py
+
+import streamlit as st
+
+# Initialize connection.
+conn = st.experimental_connection('mysql', type='sql')
+
+# Perform query.
+df = conn.query('SELECT * from mytable;', ttl=600)
+
+# Print results.
+for row in df.itertuples():
+    st.write(f"{row.name} has a :{row.pet}:")
+
