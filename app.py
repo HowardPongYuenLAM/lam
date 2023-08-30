@@ -1,19 +1,46 @@
+
+
+
+
+
+
+#CREATE DATABASE pets;
+#USE pets;
+#CREATE TABLE mytable (
+#    name            varchar(80),
+#    pet             varchar(80)
+#);
+
+#INSERT INTO mytable VALUES ('Mary', 'dog'), ('John', 'cat'), ('Robert', 'bird');
+
+# import streamlit as st
+# conn = st.experimental_connection('pets.db', type='sql')
+# pet_owners = conn.query('select * from mytable')
+# st.write("abc")
+
+
 import streamlit as st
-import os
-
-st.write("testing 2023")
-
-# streamlit_app.py
-
-import streamlit as st
+import mysql.connector
 
 # Initialize connection.
-conn = st.experimental_connection('mysql', type='sql')
+# Uses st.cache_resource to only run once.
+@st.cache_resource
+def init_connection():
+    return mysql.connector.connect(**st.secrets["pets"])
+
+conn = init_connection()
 
 # Perform query.
-df = conn.query('SELECT * from mytable;', ttl=600)
+# Uses st.cache_data to only rerun when the query changes or after 10 min.
+@st.cache_data(ttl=600)
+def run_query(query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+        return cur.fetchall()
+
+rows = run_query("SELECT * from mytable;")
 
 # Print results.
-for row in df.itertuples():
-    st.write(f"{row.name} has a :{row.pet}:")
+for row in rows:
+    st.write(f"{row[0]} has a :{row[1]}:")
 
