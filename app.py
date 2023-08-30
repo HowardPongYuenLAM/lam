@@ -25,7 +25,7 @@ import mysql.connector
 # Uses st.cache_resource to only run once.
 @st.cache_resource
 def init_connection():
-    return mysql.connector.connect(**st.secrets.db_crentials)
+    return mysql.connector.connect(**st.secrets.db_credentials)
 #    return mysql.connector.connect(**st.secrets["pets"])
 
 conn = init_connection()
